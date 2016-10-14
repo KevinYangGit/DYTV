@@ -10,6 +10,7 @@ import UIKit
 
 extension UIBarButtonItem {
 
+    // 便利构造函数
     convenience init(imageName : String, highImageName : String = "", size : CGSize = CGSize.zero) {
         let btn = UIButton()
         
@@ -25,6 +26,7 @@ extension UIBarButtonItem {
             btn.frame = CGRect(origin: CGPoint.zero, size: size)
         }
         
+        // 创建UIBarButtonItem
         self.init(customView : btn)
     }
 }
