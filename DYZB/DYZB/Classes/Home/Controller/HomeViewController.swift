@@ -15,7 +15,7 @@ class HomeViewController: UIViewController {
     // 懒加载属性
     fileprivate lazy var pageTitleView : PageTitleView = {
     
-        let titleFrame = CGRect(x: 0, y: KStatusBarH, width: KScreenW, height: KTitleViewH)
+        let titleFrame = CGRect(x: 0, y: KStatusBarH + KNavigationBarH, width: KScreenW, height: KTitleViewH)
         let titles = ["推荐", "游戏", "娱乐", "趣玩"]
         let titleView = PageTitleView(frame: titleFrame, titles: titles)
         titleView.delegate = self
@@ -24,6 +24,8 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,7 +35,7 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController {
 
-    private func setupUI() {
+    fileprivate func setupUI() {
     
         automaticallyAdjustsScrollViewInsets = false
         
@@ -43,7 +45,7 @@ extension HomeViewController {
         
     }
     
-    private func setupNavigationBar() {
+    fileprivate func setupNavigationBar() {
     
         navigationItem.leftBarButtonItem = UIBarButtonItem(imageName: "logo")
         
