@@ -13,13 +13,30 @@ private let KTitleViewH : CGFloat = 40
 class HomeViewController: UIViewController {
 
     // 懒加载属性
-    fileprivate lazy var pageTitleView : PageTitleView = {
+    fileprivate lazy var pageTitleView : PageTitleView = {[weak self] in
     
         let titleFrame = CGRect(x: 0, y: KStatusBarH + KNavigationBarH, width: KScreenW, height: KTitleViewH)
         let titles = ["推荐", "游戏", "娱乐", "趣玩"]
-        let titleView = PageTitleView(frame: titleFrame, titles: titles)
+        let titleView = PageTitleView(frame: titleFrame, isScrollEnable: false, titles: titles)
         titleView.delegate = self
         return titleView
+    }()
+    
+    fileprivate lazy var pageContentView : PageContentView = {[weak self] in
+    
+        let contentH = KScreenH - KStatusBarH - KNavigationBarH - KTitleViewH - KTabbarH
+        let contentFrame = CGRect(x: 0, y: KStatusBarH + KNavigationBarH + KTitleViewH, width: KScreenW, height: contentH)
+        
+        var childVCs = [UIViewController]()
+        for _ in 0...3 {
+            let vc = UIViewController()
+            vc.view.backgroundColor = UIColor(r: CGFloat(arc4random_uniform(255)), g: CGFloat(arc4random_uniform(255)), b: CGFloat(arc4random_uniform(255)))
+            childVCs.append(vc)
+        }
+        
+        let contentView = PageContentView(frame: contentFrame, childVCs: childVCs, parentViewController: self)
+        contentView.delegate = self
+        return contentView
     }()
     
     override func viewDidLoad() {
@@ -33,6 +50,7 @@ class HomeViewController: UIViewController {
     }
 }
 
+//设置UI界面
 extension HomeViewController {
 
     fileprivate func setupUI() {
@@ -43,6 +61,7 @@ extension HomeViewController {
         
         view.addSubview(pageTitleView)
         
+        view.addSubview(pageContentView)
     }
     
     fileprivate func setupNavigationBar() {
@@ -57,9 +76,16 @@ extension HomeViewController {
     }
 }
 
+// 遵守PageTitleViewDelegate协议
 extension HomeViewController : PageTitleViewDelegate {
-
     func pageTitleView(titleView: PageTitleView, selectedIndex index: Int) {
-        
+        pageContentView.setCurrentIndex(currentIndex: index)
+    }
+}
+
+// 遵守PageContentViewDelegate协议
+extension HomeViewController : PageContentViewDelegate {
+    func pageContentView(contentView: PageContentView, progress: CGFloat, sourceIndex: Int, targetIndex: Int) {
+        pageTitleView.setTitleWithProgress(progress: progress, sourceIndex: sourceIndex, targetIndex: targetIndex)
     }
 }
