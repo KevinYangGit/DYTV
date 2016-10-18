@@ -24,6 +24,7 @@ private let kHeaderViewID = "kHeaderViewID"
 class RecommendViewController: UIViewController {
 
     //懒加载属性
+    fileprivate lazy var recommendVM : RecommendViewModel = RecommendViewModel()
     fileprivate lazy var collectionView : UICollectionView = {[unowned self] in
     
         let layout = UICollectionViewFlowLayout()
@@ -37,15 +38,22 @@ class RecommendViewController: UIViewController {
         collectionView.backgroundColor = UIColor.white
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        collectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth] //跟着父视图进行拉伸
         
-        //collectionView.registerNib(UINib(nibName: "", bundle: nil, forCellWidthReuseIdentifier: KNormalCellID))
         
+        collectionView.register(UINib(nibName: "CollectionNormalCell", bundle: nil), forCellWithReuseIdentifier: KNormalCellID)
+        collectionView.register(UINib(nibName: "CollectionPrettyCell", bundle: nil), forCellWithReuseIdentifier: kPrettyCellID)
+        collectionView.register(UINib(nibName: "CollectionHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: kHeaderViewID)
+        
+        return collectionView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupUI()
+        
+        loadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,46 +66,63 @@ extension RecommendViewController {
 
     fileprivate func setupUI() {
     
+        view.addSubview(collectionView)
         
+    }
+}
+
+extension RecommendViewController {
+
+    fileprivate func loadData() {
+    
+        //请求推荐数据
+        recommendVM.requestData {
+            //展示推荐数据
+            self.collectionView.reloadData()
+            
+        }
     }
 }
 
 extension RecommendViewController : UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 10
+        return recommendVM.anchorGroups.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        let group = recommendVM.anchorGroups[section]
+        return group.anchors.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
      
-        let cell = UICollectionViewCell()
-        cell.contentView.backgroundColor = UIColor.red
+        let group = recommendVM.anchorGroups[indexPath.section]
+        let anchor = group.anchors[indexPath.item]
+        
+        var cell : CollectionBaseCell!
+        
+        if indexPath.section == 1 {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: kPrettyCellID, for: indexPath) as! CollectionPrettyCell
+        } else {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: KNormalCellID, for: indexPath) as! CollectionNormalCell
+        }
+        cell.anchor = anchor
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let headerView = UIView()
-        headerView.backgroundColor = UIColor.blue
-        return headerView as! UICollectionReusableView
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: kHeaderViewID, for: indexPath) as! CollectionHeaderView
+        return headerView
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.section % 2 == 0 {
+        if indexPath.section == 1 {
             return CGSize(width: kItemW, height: kPrettyItemH)
         }
         return CGSize(width: kItemW, height: kNormalItemH)
     }
     
 }
-
-
-
-
-
-
-
-

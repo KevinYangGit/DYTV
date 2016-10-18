@@ -1,19 +1,82 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CollectionPrettyCell" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CollectionPrettyCell" customModule="DYZB" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="182" height="215"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                <rect key="frame" x="0.0" y="0.0" width="182" height="215"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogK-wN-ehk">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="98g-cP-FUf"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <state key="normal" title="北京市" image="ico_location">
+                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="盒子鱼教育" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQF-ce-L0p">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="FMT-Nx-Oek"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="live_cell_default_phone" translatesAutoresizingMaskIntoConstraints="NO" id="Ddi-Fe-mrH">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qs9-YP-kg2">
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="IPy-AA-Vxl"/>
+                            <constraint firstAttribute="height" constant="20" id="fiD-FW-wIh"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <state key="normal" title="6666在线">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                </subviews>
             </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="ogK-wN-ehk" secondAttribute="bottom" constant="10" id="5Cg-Hr-Yxk"/>
+                <constraint firstItem="cQF-ce-L0p" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="IK7-Xv-ifR"/>
+                <constraint firstAttribute="trailing" secondItem="Ddi-Fe-mrH" secondAttribute="trailing" id="MuD-zc-m5U"/>
+                <constraint firstAttribute="trailing" secondItem="cQF-ce-L0p" secondAttribute="trailing" id="S6v-7N-KbD"/>
+                <constraint firstItem="Ddi-Fe-mrH" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Yiy-wE-t4n"/>
+                <constraint firstItem="cQF-ce-L0p" firstAttribute="top" secondItem="Ddi-Fe-mrH" secondAttribute="bottom" id="dDv-TB-PBY"/>
+                <constraint firstItem="Ddi-Fe-mrH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="e1f-1u-XCY"/>
+                <constraint firstItem="ogK-wN-ehk" firstAttribute="top" secondItem="cQF-ce-L0p" secondAttribute="bottom" id="gzr-im-aOk"/>
+                <constraint firstAttribute="trailing" secondItem="qs9-YP-kg2" secondAttribute="trailing" constant="8" id="h9Q-vW-zGh"/>
+                <constraint firstAttribute="trailing" secondItem="ogK-wN-ehk" secondAttribute="trailing" id="qAX-Qh-6x8"/>
+                <constraint firstItem="ogK-wN-ehk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="rBc-9c-5Rj"/>
+                <constraint firstItem="qs9-YP-kg2" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="yu8-6J-pPH"/>
+            </constraints>
+            <connections>
+                <outlet property="cityBtn" destination="ogK-wN-ehk" id="75o-mi-YzU"/>
+                <outlet property="iconImageView" destination="Ddi-Fe-mrH" id="hqB-hL-VUd"/>
+                <outlet property="nickNameLabel" destination="cQF-ce-L0p" id="qjb-Re-XgD"/>
+                <outlet property="onlineBtn" destination="qs9-YP-kg2" id="6cF-oh-JEL"/>
+            </connections>
+            <point key="canvasLocation" x="35" y="53.5"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="ico_location" width="12" height="12"/>
+        <image name="live_cell_default_phone" width="103" height="103"/>
+    </resources>
 </document>

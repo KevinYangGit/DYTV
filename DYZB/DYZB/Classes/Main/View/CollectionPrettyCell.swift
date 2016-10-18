@@ -9,8 +9,23 @@
 import UIKit
 
 class CollectionPrettyCell: CollectionBaseCell {
-
-//    override func awakeFromNib() {
+    
+    //控件属性
+    @IBOutlet weak var cityBtn: UIButton!
+    
+    //定义模型属性
+    override var anchor: AnchorModel? {
+        didSet {
+            //将属性传递给父类
+            super.anchor = anchor
+            
+            //所在的城市
+            cityBtn.setTitle(anchor?.anchor_city, for: .normal)
+        }
+    }
+    
+    
+    //    override func awakeFromNib() {
 //        super.awakeFromNib()
 //        // Initialization code
 //    }
