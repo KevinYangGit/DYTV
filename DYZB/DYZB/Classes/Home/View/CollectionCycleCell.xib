@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CollectionCycleCell" customModule="DYZB" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="314" height="152"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="314" height="152"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Img_default" translatesAutoresizingMaskIntoConstraints="NO" id="oiG-Fz-3A7"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PPq-4W-YF9">
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="斗鱼直播" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOQ-FK-jSn">
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="rOQ-FK-jSn" secondAttribute="trailing" id="E3r-7w-NcD"/>
+                            <constraint firstAttribute="height" constant="30" id="NNt-Fy-VRx"/>
+                            <constraint firstItem="rOQ-FK-jSn" firstAttribute="centerY" secondItem="PPq-4W-YF9" secondAttribute="centerY" id="SXb-tA-paM"/>
+                            <constraint firstItem="rOQ-FK-jSn" firstAttribute="leading" secondItem="PPq-4W-YF9" secondAttribute="leading" constant="15" id="sEg-Mz-r34"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="oiG-Fz-3A7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="1nM-0B-h5p"/>
+                <constraint firstAttribute="bottom" secondItem="oiG-Fz-3A7" secondAttribute="bottom" id="Nzs-rh-ExL"/>
+                <constraint firstItem="oiG-Fz-3A7" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Vx3-3x-IMN"/>
+                <constraint firstAttribute="trailing" secondItem="PPq-4W-YF9" secondAttribute="trailing" id="l9g-W9-ZV6"/>
+                <constraint firstAttribute="bottom" secondItem="PPq-4W-YF9" secondAttribute="bottom" id="oxI-ma-zXQ"/>
+                <constraint firstAttribute="trailing" secondItem="oiG-Fz-3A7" secondAttribute="trailing" id="vn3-vy-UOG"/>
+                <constraint firstItem="PPq-4W-YF9" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="zgM-UF-XsX"/>
+            </constraints>
+            <connections>
+                <outlet property="iconImageView" destination="oiG-Fz-3A7" id="2az-Sh-mpe"/>
+                <outlet property="titleLabel" destination="rOQ-FK-jSn" id="IFh-fB-enP"/>
+            </connections>
+            <point key="canvasLocation" x="-394" y="-152"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Img_default" width="172" height="103"/>
+    </resources>
+</document>

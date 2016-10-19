@@ -25,6 +25,12 @@ class RecommendViewController: UIViewController {
 
     //懒加载属性
     fileprivate lazy var recommendVM : RecommendViewModel = RecommendViewModel()
+    fileprivate lazy var cycleView : RecommendCycleView = {
+    
+        let cycleView = RecommendCycleView.recommendCycleView()
+        cycleView.frame = CGRect(x: 0, y: -(kCycleViewH + kGameViewH), width: KScreenW, height: kCycleViewH)
+        return cycleView
+    }()
     fileprivate lazy var collectionView : UICollectionView = {[unowned self] in
     
         let layout = UICollectionViewFlowLayout()
@@ -39,7 +45,6 @@ class RecommendViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth] //跟着父视图进行拉伸
-        
         
         collectionView.register(UINib(nibName: "CollectionNormalCell", bundle: nil), forCellWithReuseIdentifier: KNormalCellID)
         collectionView.register(UINib(nibName: "CollectionPrettyCell", bundle: nil), forCellWithReuseIdentifier: kPrettyCellID)
@@ -68,6 +73,9 @@ extension RecommendViewController {
     
         view.addSubview(collectionView)
         
+        collectionView.addSubview(cycleView)
+        
+        collectionView.contentInset = UIEdgeInsets(top: kCycleViewH + kGameViewH, left: 0, bottom: 0, right: 0)
     }
 }
 
@@ -80,6 +88,10 @@ extension RecommendViewController {
             //展示推荐数据
             self.collectionView.reloadData()
             
+        }
+        
+        recommendVM.requestCycleData {
+            self.cycleView.cycleModels = self.recommendVM.cycleModels
         }
     }
 }
@@ -116,7 +128,6 @@ extension RecommendViewController : UICollectionViewDataSource, UICollectionView
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: kHeaderViewID, for: indexPath) as! CollectionHeaderView
         return headerView
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 1 {
