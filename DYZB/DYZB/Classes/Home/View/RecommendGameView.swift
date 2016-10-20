@@ -30,7 +30,7 @@ class RecommendGameView: UIView {
         autoresizingMask = UIViewAutoresizing()
         
         //注册cell
-        collectionView.register(UINib(nibName: "", bundle: nil), forCellWithReuseIdentifier: kGameCellID)
+        collectionView.register(UINib(nibName: "CollectionGameCell", bundle: nil), forCellWithReuseIdentifier: kGameCellID)
         
         //添加内边距
         collectionView.contentInset = UIEdgeInsets(top: 0, left: kEdageInsetMargin, bottom: 0, right: kEdageInsetMargin)
@@ -51,18 +51,12 @@ extension RecommendGameView : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kGameCellID, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kGameCellID, for: indexPath) as! CollectionGameCell
+        
+        cell.baseGame = groups![(indexPath as NSIndexPath).item]
+        
         return cell
         
     }
 }
-
-
-
-
-
-
-
-
-
 

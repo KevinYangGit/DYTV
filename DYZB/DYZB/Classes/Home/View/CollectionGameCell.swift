@@ -7,12 +7,26 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CollectionGameCell: UICollectionViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    //控件属性
+    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    //模型属性
+    var baseGame : BaseGameModel? {
+        didSet {
+            titleLabel.text = baseGame?.tag_name
+            
+            if let iconURL = URL(string: baseGame?.icon_url ?? "") {
+                iconImageView.kf.setImage(with: iconURL)
+            } else {
+                iconImageView.image = UIImage(named: "home_more_btn")
+            }
+        }
     }
-
+    
+    
 }

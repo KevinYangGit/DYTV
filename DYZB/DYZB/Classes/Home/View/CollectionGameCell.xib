@@ -24,6 +24,12 @@
                             <constraint firstAttribute="height" constant="45" id="9fL-ZN-L93"/>
                             <constraint firstAttribute="width" constant="45" id="hYi-zS-knV"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <real key="value" value="22.5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H7z-A4-YRQ">
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
@@ -40,9 +46,14 @@
                 <constraint firstAttribute="trailing" secondItem="owC-4z-p5B" secondAttribute="trailing" id="k1C-3Q-Nfh"/>
                 <constraint firstAttribute="trailing" secondItem="H7z-A4-YRQ" secondAttribute="trailing" id="kC4-dM-3Uh"/>
                 <constraint firstItem="owC-4z-p5B" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="kjk-Oh-fQ4"/>
-                <constraint firstAttribute="bottom" secondItem="H7z-A4-YRQ" secondAttribute="bottom" id="kkw-WV-NvV"/>
+                <constraint firstAttribute="bottom" secondItem="H7z-A4-YRQ" secondAttribute="bottom" constant="-1" id="kkw-WV-NvV"/>
                 <constraint firstItem="H7z-A4-YRQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="zPJ-sA-Yb3"/>
             </constraints>
+            <connections>
+                <outlet property="iconImageView" destination="1qC-EY-t90" id="Bfd-fp-4rg"/>
+                <outlet property="titleLabel" destination="owC-4z-p5B" id="MZf-hB-ayS"/>
+            </connections>
+            <point key="canvasLocation" x="-25" y="-39"/>
         </collectionViewCell>
     </objects>
 </document>
