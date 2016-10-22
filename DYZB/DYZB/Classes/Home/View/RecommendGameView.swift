@@ -10,6 +10,8 @@ import UIKit
 
 private let kGameCellID = "kGameCellID"
 private let kEdageInsetMargin : CGFloat = 10
+
+
 class RecommendGameView: UIView {
 
     //控件属性
@@ -19,7 +21,7 @@ class RecommendGameView: UIView {
     var groups : [BaseGameModel]? {
         didSet {
             //刷新表格
-            
+            collectionView.reloadData()
         }
     }
     

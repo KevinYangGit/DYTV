@@ -31,6 +31,13 @@ class RecommendViewController: UIViewController {
         cycleView.frame = CGRect(x: 0, y: -(kCycleViewH + kGameViewH), width: KScreenW, height: kCycleViewH)
         return cycleView
     }()
+    
+    fileprivate lazy var gameView : RecommendGameView = {
+        let gameView = RecommendGameView.recommendGameView()
+        gameView.frame = CGRect(x: 0, y: -kGameViewH, width: KScreenW, height: kGameViewH);
+        return gameView
+    }()
+    
     fileprivate lazy var collectionView : UICollectionView = {[unowned self] in
     
         let layout = UICollectionViewFlowLayout()
@@ -75,6 +82,8 @@ extension RecommendViewController {
         
         collectionView.addSubview(cycleView)
         
+        collectionView.addSubview(gameView)
+        
         collectionView.contentInset = UIEdgeInsets(top: kCycleViewH + kGameViewH, left: 0, bottom: 0, right: 0)
     }
 }
@@ -87,6 +96,17 @@ extension RecommendViewController {
         recommendVM.requestData {
             //展示推荐数据
             self.collectionView.reloadData()
+            
+            var groups = self.recommendVM.anchorGroups
+            
+            groups.removeFirst()
+            groups.removeFirst()
+            
+            let moreGroup = AnchorGroup()
+            moreGroup.tag_name = "更多"
+            groups.append(moreGroup)
+            
+            self.gameView.groups = groups
             
         }
         
@@ -126,6 +146,8 @@ extension RecommendViewController : UICollectionViewDataSource, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: kHeaderViewID, for: indexPath) as! CollectionHeaderView
+        
+        headerView.group = recommendVM.anchorGroups[indexPath.section]
         return headerView
     }
     
