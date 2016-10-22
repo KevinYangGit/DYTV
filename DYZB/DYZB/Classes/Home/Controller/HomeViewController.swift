@@ -14,7 +14,6 @@ class HomeViewController: UIViewController {
 
     // 懒加载属性
     fileprivate lazy var pageTitleView : PageTitleView = {[weak self] in
-    
         let titleFrame = CGRect(x: 0, y: KStatusBarH + KNavigationBarH, width: KScreenW, height: KTitleViewH)
         let titles = ["推荐", "游戏", "娱乐", "趣玩"]
         let titleView = PageTitleView(frame: titleFrame, isScrollEnable: false, titles: titles)
@@ -23,14 +22,14 @@ class HomeViewController: UIViewController {
     }()
     
     fileprivate lazy var pageContentView : PageContentView = {[weak self] in
-    
         let contentH = KScreenH - KStatusBarH - KNavigationBarH - KTitleViewH - KTabbarH
         let contentFrame = CGRect(x: 0, y: KStatusBarH + KNavigationBarH + KTitleViewH, width: KScreenW, height: contentH)
         
         var childVCs = [UIViewController]()
         childVCs.append(RecommendViewController())
         childVCs.append(GameViewController())
-        for _ in 0..<2 {
+        childVCs.append(AmuseViewController())
+        for _ in 0..<1 {
             let vc = UIViewController()
             vc.view.backgroundColor = UIColor(r: CGFloat(arc4random_uniform(255)), g: CGFloat(arc4random_uniform(255)), b: CGFloat(arc4random_uniform(255)))
             childVCs.append(vc)

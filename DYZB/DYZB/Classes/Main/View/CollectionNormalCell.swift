@@ -23,10 +23,4 @@ class CollectionNormalCell: CollectionBaseCell {
             roomNameLabel.text = anchor?.room_name
         }
     }
-    
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//    }
-
 }

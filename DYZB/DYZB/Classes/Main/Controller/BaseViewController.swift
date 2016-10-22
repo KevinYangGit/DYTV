@@ -12,14 +12,14 @@ class BaseViewController: UIViewController {
 
     //定义内容view
     var contentView : UIView?
-    
+    //动画
     fileprivate lazy var animImageView : UIImageView = {[unowned self] in
-        let imageView = UIImageView(image: UIImage(named: ""))
+        let imageView = UIImageView(image: UIImage(named: "img_loading_1"))
         imageView.center = self.view.center
         imageView.animationImages = [UIImage(named : "img_loading_1")!, UIImage(named : "img_loading_2")!]
         imageView.animationDuration = 0.5
         imageView.animationRepeatCount = LONG_MAX
-        imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        imageView.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin]
         return imageView
     }()
     
@@ -28,11 +28,6 @@ class BaseViewController: UIViewController {
         
         setupUI()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
 }
 
 extension BaseViewController {
