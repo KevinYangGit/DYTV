@@ -15,7 +15,7 @@ class CustomNavigationController: UINavigationController {
         
         guard let systemGes = interactivePopGestureRecognizer else { return }
         
-        guard let gesView = systemGes.view else { return }
+        guard let v = systemGes.view else { return }
         
         let targets = systemGes.value(forKey: "_targets") as? [NSObject]
         guard let targetObjc = targets?.first else { return }
