@@ -25,7 +25,7 @@ class CustomNavigationController: UINavigationController {
         let action = Selector(("handleNavigationTransition:"))
         
         let panGes = UIPanGestureRecognizer()
-        gesView.addGestureRecognizer(panGes)
+        v.addGestureRecognizer(panGes)
         panGes.addTarget(target, action: action)
         
     }
