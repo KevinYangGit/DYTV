@@ -58,7 +58,6 @@ extension RecommendGameView : UICollectionViewDataSource {
         cell.baseGame = groups![(indexPath as NSIndexPath).item]
         
         return cell
-        
     }
 }
 
