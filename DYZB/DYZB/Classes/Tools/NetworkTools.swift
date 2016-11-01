@@ -25,7 +25,7 @@ class NetworkTools: NSObject {
         Alamofire.request(URLString, method: method, parameters: parameters).responseJSON { (response) in
             //获取结果
             guard let result = response.result.value else {
-                print(response.result.error)
+                print(response.result.error ?? 0)
                 return
             }
             
